@@ -68,10 +68,14 @@ analysis_benchmark.json
 .pub-cache/
 .pub/
 build/
+lib/generated
 flutter_*.png
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
+*.g.dart
+*.freezed.dart
+*.config.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar
