@@ -32,7 +32,7 @@ jobs:
             echo $ENCODED_STRING | base64 -di > "${TMP_KEYSTORE_FILE_PATH}"/keystore_release.jks
             
       - name: Build prod
-        run: flutter build apk --release --obfuscation --split-debug-info=build/app/outputs/symbols
+        run: flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols
         env:
           KEYSTORE: "${RUNNER_TEMP}/keystore/keystore_release.jks"
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
