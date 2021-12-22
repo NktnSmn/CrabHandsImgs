@@ -19,6 +19,7 @@ jobs:
       
       - run: flutter pub get
       - run: flutter packages pub run build_runner build
+      - run: flutter pub run intl_utils:generate
       - run: flutter analyze --no-fatal-infos --no-fatal-warnings
       
       - name: Decode keystore
