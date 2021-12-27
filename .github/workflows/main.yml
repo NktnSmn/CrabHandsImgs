@@ -6,12 +6,49 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  #build_android:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/setup-java@v1
+  #      with:
+  #        java-version: "12.x"
+  #    - uses: subosito/flutter-action@v1
+  #      with:
+  #        channel: "stable"
+  #    - uses: actions/checkout@v2
+  #    
+  #    - run: flutter pub get
+  #    - run: flutter packages pub run build_runner build
+  #    - run: flutter pub run intl_utils:generate
+  #    - run: flutter analyze --no-fatal-infos --no-fatal-warnings
+  #    
+  #    - name: Decode keystore
+  #      env:
+  #          ENCODED_STRING: ${{ secrets.KEYSTORE }}
+  #      run: |
+  #          TMP_KEYSTORE_FILE_PATH="${RUNNER_TEMP}"/keystore
+  #          echo "${TMP_KEYSTORE_FILE_PATH}/keystore_release.jks"
+  #          mkdir "${TMP_KEYSTORE_FILE_PATH}"
+  #          echo $ENCODED_STRING | base64 -di > "${TMP_KEYSTORE_FILE_PATH}"/keystore_release.jks
+  #          
+  #    - name: Build prod
+  #      run: flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols
+  #      env:
+  #        KEYSTORE: ${{ runner.temp }}/keystore/keystore_release.jks
+  #        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+  #        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+  #        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+  #        
+  #    - uses: actions/upload-artifact@v2
+  #      with:
+  #        name: APK
+  #        path: |
+  #          build/app/outputs/flutter-apk/app-release.apk
+  #          build/app/outputs/symbols
+            
+  build_ios:
+    runs-on: macOS-latest
     steps:
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
@@ -21,28 +58,10 @@ jobs:
       - run: flutter packages pub run build_runner build
       - run: flutter pub run intl_utils:generate
       - run: flutter analyze --no-fatal-infos --no-fatal-warnings
+      - run: flutter build ios --release --no-codesign
       
-      - name: Decode keystore
-        env:
-            ENCODED_STRING: ${{ secrets.KEYSTORE }}
-        run: |
-            TMP_KEYSTORE_FILE_PATH="${RUNNER_TEMP}"/keystore
-            echo "${TMP_KEYSTORE_FILE_PATH}/keystore_release.jks"
-            mkdir "${TMP_KEYSTORE_FILE_PATH}"
-            echo $ENCODED_STRING | base64 -di > "${TMP_KEYSTORE_FILE_PATH}"/keystore_release.jks
-            
-      - name: Build prod
-        run: flutter build apk --release --obfuscate --split-debug-info=build/app/outputs/symbols
-        env:
-          KEYSTORE: ${{ runner.temp }}/keystore/keystore_release.jks
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          
       - uses: actions/upload-artifact@v2
         with:
-          name: APK
+          name: APP
           path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/symbols
-          
+            build/ios/iphoneos/Runner.app
