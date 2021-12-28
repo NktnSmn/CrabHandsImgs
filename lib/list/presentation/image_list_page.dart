@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crab_hands_imgs/generated/l10n.dart';
-import 'package:crab_hands_imgs/list/domain/models/image/image.dart' as domain;
 import 'package:crab_hands_imgs/list/presentation/image_list_event.dart';
 import 'package:crab_hands_imgs/list/presentation/image_list_state.dart';
 import 'package:flutter/material.dart';
@@ -38,14 +37,11 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
       return ListView.builder(
         padding: EdgeInsets.zero,
         itemCount: state.images.length,
-        itemBuilder: (context, position) => _getItem(context, state.images, position),
+        itemBuilder: (context, position) => CachedNetworkImage(imageUrl: state.images[position].regularUrl),
         physics: const ClampingScrollPhysics(),
       );
     } else {
       throw Exception();
     }
   }
-
-  Widget _getItem(BuildContext context, List<domain.Image> images, int position) =>
-      CachedNetworkImage(imageUrl: images[position].regularUrl);
 }

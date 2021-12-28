@@ -35,3 +35,4 @@ linter:
   rules:
     flutter_style_todos: false
     omit_local_variable_types: false
+    sort_pub_dependencies: false
