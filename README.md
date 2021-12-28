@@ -1,4 +1,4 @@
-# crub_hands_imgs
+# crab_hands_imgs
 
 A new Flutter project.
 
