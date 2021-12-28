@@ -1,6 +1,6 @@
-import 'package:crub_hands_imgs/detail/presentation/image_page.dart';
-import 'package:crub_hands_imgs/generated/l10n.dart';
-import 'package:crub_hands_imgs/list/presentation/image_list_page.dart';
+import 'package:crab_hands_imgs/detail/presentation/image_page.dart';
+import 'package:crab_hands_imgs/generated/l10n.dart';
+import 'package:crab_hands_imgs/list/presentation/image_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +19,7 @@ class CrabHandsImgsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const int _primaryColor = 0xFF2B4570;
     const int _accentColor = 0xFFE83151;
+    PaintingBinding.instance?.imageCache?.maximumSizeBytes = 1000 << 20;
     return MaterialApp.router(
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="crub.hands.crub_hands_imgs">
+    package="crab.hands.crab_hands_imgs">
    <application
-        android:label="crub_hands_imgs"
+        android:label="crab_hands_imgs"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

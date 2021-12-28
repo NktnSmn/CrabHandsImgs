@@ -1,5 +1,5 @@
-import 'package:crub_hands_imgs/app.dart';
-import 'package:crub_hands_imgs/di.dart';
+import 'package:crab_hands_imgs/app.dart';
+import 'package:crab_hands_imgs/di.dart';
 import 'package:flutter/material.dart';
 import 'package:koin/koin.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:crub_hands_imgs/base/data/local/image_table.dart';
+import 'package:crab_hands_imgs/base/data/local/image_table.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path/path.dart' as path;

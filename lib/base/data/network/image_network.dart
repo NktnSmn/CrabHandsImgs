@@ -1,5 +1,5 @@
-import 'package:crub_hands_imgs/base/data/network/image_links_network.dart';
-import 'package:crub_hands_imgs/base/data/network/image_urls_network.dart';
+import 'package:crab_hands_imgs/base/data/network/image_links_network.dart';
+import 'package:crab_hands_imgs/base/data/network/image_urls_network.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_network.freezed.dart';

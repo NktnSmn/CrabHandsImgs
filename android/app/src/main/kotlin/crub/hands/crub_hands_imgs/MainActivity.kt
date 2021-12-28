@@ -1,4 +1,4 @@
-package crub.hands.crub_hands_imgs
+package crab.hands.crab_hands_imgs
 
 import io.flutter.embedding.android.FlutterActivity
 

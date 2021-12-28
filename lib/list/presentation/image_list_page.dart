@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:crub_hands_imgs/generated/l10n.dart';
-import 'package:crub_hands_imgs/list/domain/models/image/image.dart' as domain;
-import 'package:crub_hands_imgs/list/presentation/image_list_event.dart';
-import 'package:crub_hands_imgs/list/presentation/image_list_state.dart';
+import 'package:crab_hands_imgs/generated/l10n.dart';
+import 'package:crab_hands_imgs/list/domain/models/image/image.dart' as domain;
+import 'package:crab_hands_imgs/list/presentation/image_list_event.dart';
+import 'package:crab_hands_imgs/list/presentation/image_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +38,6 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
       return ListView.builder(
         padding: EdgeInsets.zero,
         itemCount: state.images.length,
-        // ignore: avoid-returning-widgets
         itemBuilder: (context, position) => _getItem(context, state.images, position),
         physics: const ClampingScrollPhysics(),
       );

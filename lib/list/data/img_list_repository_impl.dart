@@ -1,7 +1,7 @@
-import 'package:crub_hands_imgs/base/data/local/database.dart';
-import 'package:crub_hands_imgs/base/data/network/image_network.dart';
-import 'package:crub_hands_imgs/list/domain/img_list_repository.dart';
-import 'package:crub_hands_imgs/list/domain/models/image/image.dart';
+import 'package:crab_hands_imgs/base/data/local/database.dart';
+import 'package:crab_hands_imgs/base/data/network/image_network.dart';
+import 'package:crab_hands_imgs/list/domain/img_list_repository.dart';
+import 'package:crab_hands_imgs/list/domain/models/image/image.dart';
 import 'package:dio/dio.dart';
 
 typedef RawJSON = Map<String, dynamic>;

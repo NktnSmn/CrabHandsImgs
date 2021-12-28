@@ -1,6 +1,6 @@
 //part 'image_list_event.freezed.dart';
 
-import 'package:crub_hands_imgs/list/domain/models/image/image.dart';
+import 'package:crab_hands_imgs/list/domain/models/image/image.dart';
 
 abstract class ImageListEvent {}
 

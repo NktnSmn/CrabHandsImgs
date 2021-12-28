@@ -1,7 +1,7 @@
-import 'package:crub_hands_imgs/list/domain/img_list_repository.dart';
-import 'package:crub_hands_imgs/list/domain/models/image/image.dart';
-import 'package:crub_hands_imgs/list/presentation/image_list_event.dart';
-import 'package:crub_hands_imgs/list/presentation/image_list_state.dart';
+import 'package:crab_hands_imgs/list/domain/img_list_repository.dart';
+import 'package:crab_hands_imgs/list/domain/models/image/image.dart';
+import 'package:crab_hands_imgs/list/presentation/image_list_event.dart';
+import 'package:crab_hands_imgs/list/presentation/image_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ImageListBloc extends Bloc<ImageListEvent, ImageListState> {
