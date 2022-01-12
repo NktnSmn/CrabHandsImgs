@@ -19,7 +19,7 @@ class CrabHandsImgsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const int _primaryColor = 0xFF2B4570;
     const int _accentColor = 0xFFE83151;
-    PaintingBinding.instance?.imageCache?.maximumSizeBytes = 1000 << 20;
+    PaintingBinding.instance?.imageCache?.maximumSizeBytes = (0.2 * 1024 * 1024 * 1024).toInt();
     return MaterialApp.router(
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,

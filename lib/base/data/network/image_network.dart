@@ -1,5 +1,6 @@
 import 'package:crab_hands_imgs/base/data/network/image_links_network.dart';
 import 'package:crab_hands_imgs/base/data/network/image_urls_network.dart';
+import 'package:crab_hands_imgs/base/data/network/user_network.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_network.freezed.dart';
@@ -14,11 +15,13 @@ class ImageNetwork with _$ImageNetwork {
     int width,
     int height,
     String color,
+    String blurHash,
     ImageUrlsNetwork urls,
     ImageLinksNetwork links,
     String? description,
     int likes,
     bool likedByUser,
+    UserNetwork user,
     DateTime createdAt,
     DateTime updatedAt,
   ) = _ImageNetwork;

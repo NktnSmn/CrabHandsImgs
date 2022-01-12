@@ -1,13 +1,12 @@
 import 'package:crab_hands_imgs/list/domain/models/image/image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 part 'image_list_state.freezed.dart';
 
-abstract class ImageListState {}
-
-class LoadingState extends ImageListState {}
-
 @freezed
-class ContentState extends ImageListState with _$ContentState {
-  factory ContentState(List<Image> images) = _ContentState;
+class ImageListState with _$ImageListState {
+  factory ImageListState({
+    required PagingController<int, Image> pagingController,
+  }) = _ImageListState;
 }
