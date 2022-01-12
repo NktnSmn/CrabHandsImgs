@@ -20,14 +20,12 @@
 **/.idea/assetWizardSettings.xml
 **/.idea/dictionaries
 **/.idea/libraries
+**/.idea/inspectionProfiles
 **/.idea/jarRepositories.xml
 **/.idea/misc.xml
-# Android Studio 3 in .gitignore file.
 **/.idea/caches
 **/.idea/modules.xml
-# Comment next line if keeping position of elements in Navigation Editor is relevant for you
-**/.idea/navEditor.xml
-# markdown-navigator plugin
+**/.idea/compiler.xml
 **/.idea/markdown-navigator*
 
 # Visual Studio Code related
