@@ -1,4 +1,4 @@
-//ignore_for_file: avoid_print
+import 'dart:math';
 
 import 'package:crab_hands_imgs/generated/assets.gen.dart';
 import 'package:crab_hands_imgs/generated/l10n.dart';
@@ -15,6 +15,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:koin_flutter/src/widget_extension.dart'; //ignore: implementation_imports
+
+//ignore_for_file: avoid_print, avoid-returning-widgets
 
 class ImageListPage extends StatefulWidget {
   static List<GoRoute> get routes => <GoRoute>[
@@ -135,12 +137,27 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
 
   ItemWidgetBuilder<domain.Image> _createItemBuilder(Size screenSize) {
     final double imageHeight = screenSize.height / 3;
+    final List<String> gifsUrls = [
+      'https://i.gifer.com/By.gif',
+      'https://cdnb.artstation.com/p/assets/images/images/017/172/739/original/alexander-rybalchenko-mk85.gif?1554914980',
+      'https://i.gifer.com/XOsX.gif',
+      'https://i.gifer.com/2GU.gif',
+      'https://i.gifer.com/Be.gif',
+      'https://i.gifer.com/4vo.gif',
+      'https://i.gifer.com/PEsm.gif',
+    ];
     return (context, item, index) => Column(
           children: [
             Slidable(
-              startActionPane: _createStartSlideActionPane(), //ignore: avoid-returning-widgets
-              endActionPane: _createEndSlideActionPane(), //ignore: avoid-returning-widgets
-              child: _createImage(item, screenSize, imageHeight), //ignore: avoid-returning-widgets
+              startActionPane: _createStartSlideActionPane(),
+              endActionPane: _createEndSlideActionPane(),
+              child: index % 3 == 0
+                  ? _createImage(
+                      gifsUrls[Random().nextInt(gifsUrls.length)],
+                      screenSize,
+                      imageHeight,
+                    )
+                  : _createItemImage(item, screenSize, imageHeight),
             ),
             Container(
               padding: const EdgeInsets.only(top: 4, left: 6, right: 6),
@@ -152,7 +169,7 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
                   const Spacer(),
                   Text(item.user.name),
                   const SizedBox(width: 4),
-                  _createAuthorPhoto(item), //ignore: avoid-returning-widgets
+                  _createAuthorPhoto(item),
                 ],
               ),
             ),
@@ -198,8 +215,11 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         ],
       );
 
-  ExtendedImage _createImage(domain.Image item, Size screenSize, double imageHeight) => ExtendedImage.network(
-        item.regularUrl,
+  ExtendedImage _createItemImage(domain.Image item, Size screenSize, double imageHeight) =>
+      _createImage(item.regularUrl, screenSize, imageHeight);
+
+  ExtendedImage _createImage(String url, Size screenSize, double imageHeight) => ExtendedImage.network(
+        url,
         width: double.infinity,
         height: imageHeight,
         //cacheHeight: imageHeight.toInt(),
@@ -208,15 +228,9 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         loadStateChanged: (state) {
           switch (state.extendedImageLoadState) {
             case LoadState.loading:
-              //return SizedBox(
-              //  width: screenSize.width,
-              //  height: screenSize.width * (item.height / item.width),
-              //  child: BlurHash(hash: item.blurHash),
-              //);
               return Assets.images.icImage.image(
                 fit: BoxFit.none,
-                width: screenSize.width,
-                height: screenSize.width * (item.height / item.width),
+                width: 200,
               );
             default:
               return null;
