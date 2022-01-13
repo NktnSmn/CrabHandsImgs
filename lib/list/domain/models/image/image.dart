@@ -22,7 +22,7 @@ class Image with _$Image {
     String downloadLocationLink,
     String? description,
     int likes,
-    bool likedByUser,
+    bool likedByUser, //ignore: avoid_positional_boolean_parameters
     User user,
     DateTime createdAt,
     DateTime updatedAt,

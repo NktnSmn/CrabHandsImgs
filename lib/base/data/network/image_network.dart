@@ -20,7 +20,7 @@ class ImageNetwork with _$ImageNetwork {
     ImageLinksNetwork links,
     String? description,
     int likes,
-    bool likedByUser,
+    bool likedByUser, //ignore: avoid_positional_boolean_parameters
     UserNetwork user,
     DateTime createdAt,
     DateTime updatedAt,

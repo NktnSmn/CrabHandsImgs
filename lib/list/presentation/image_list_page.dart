@@ -245,15 +245,9 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         shape: BoxShape.circle,
         enableLoadState: false,
         loadStateChanged: (state) {
-          if (state.extendedImageLoadState == LoadState.loading) {
-            return Assets.images.icImage.image(
-              fit: BoxFit.cover,
-              width: 34,
-              height: 34,
-            );
-          } else {
-            return null;
-          }
+          return state.extendedImageLoadState == LoadState.loading
+              ? Assets.images.icImage.image(fit: BoxFit.cover, width: 34, height: 34)
+              : null;
         },
       );
 }

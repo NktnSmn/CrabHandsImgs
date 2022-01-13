@@ -10,7 +10,7 @@ typedef RawJSON = Map<String, dynamic>;
 typedef RawJSONList = List<RawJSON>;
 
 class ImgListRepositoryImpl implements ImgListRepository {
-  final Database _database;
+  final Database _database; // ignore: unused_field
   final Dio _dio;
 
   ImgListRepositoryImpl(this._database, this._dio);

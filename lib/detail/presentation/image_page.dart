@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ImagePage extends StatelessWidget {
-  final String _id;
+  final String _id; // ignore: unused_field
 
   static List<GoRoute> get routes => <GoRoute>[
         GoRoute(
