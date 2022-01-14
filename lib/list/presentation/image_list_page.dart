@@ -7,6 +7,7 @@ import 'package:crab_hands_imgs/list/presentation/image_list_event.dart';
 import 'package:crab_hands_imgs/list/presentation/image_list_state.dart';
 import 'package:crab_hands_imgs/list/presentation/video_item.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -120,7 +121,7 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
           body: Container(
             alignment: Alignment.center,
             child: SizedBox(
-              width: _isLargeScreen() ? screenSize.width / 3 : double.infinity,
+              width: kIsWeb ? 1024 : _isTablet() ? screenSize.width / 2 : double.infinity,
               child: PagedListView.separated(
                 pagingController: _bloc.state.pagingController,
                 builderDelegate: PagedChildBuilderDelegate<domain.Image>(itemBuilder: _createItemBuilder(screenSize)),
@@ -142,7 +143,7 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
     super.dispose();
   }
 
-  bool _isLargeScreen() {
+  bool _isTablet() {
     final shortestSide = MediaQuery.of(context).size.shortestSide;
     return shortestSide >= 600;
   }
