@@ -5,6 +5,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
+        android:name="androidx.multidex.MultiDexApplication"
         android:label="crab_hands_imgs">
         <activity
             android:name=".MainActivity"
