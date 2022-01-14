@@ -27,6 +27,8 @@
 **/.idea/modules.xml
 **/.idea/compiler.xml
 **/.idea/markdown-navigator*
+**/.idea/.name
+**/.idea/.gitignore
 
 # Visual Studio Code related
 .classpath
