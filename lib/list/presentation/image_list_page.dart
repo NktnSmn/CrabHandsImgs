@@ -117,13 +117,19 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: Text(Strings.of(context).imageListPageTitle)),
-          body: PagedListView.separated(
-            pagingController: _bloc.state.pagingController,
-            builderDelegate: PagedChildBuilderDelegate<domain.Image>(itemBuilder: _createItemBuilder(screenSize)),
-            separatorBuilder: (context, index) => const SizedBox(width: double.infinity, height: 16),
-            addAutomaticKeepAlives: false,
-            physics: const ClampingScrollPhysics(),
-            cacheExtent: screenSize.height * 2,
+          body: Container(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: _isLargeScreen() ? screenSize.width / 3 : double.infinity,
+              child: PagedListView.separated(
+                pagingController: _bloc.state.pagingController,
+                builderDelegate: PagedChildBuilderDelegate<domain.Image>(itemBuilder: _createItemBuilder(screenSize)),
+                separatorBuilder: (context, index) => const SizedBox(width: double.infinity, height: 16),
+                addAutomaticKeepAlives: false,
+                physics: const ClampingScrollPhysics(),
+                cacheExtent: screenSize.height * 2,
+              ),
+            ),
           ),
         );
       },
@@ -134,6 +140,11 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
   void dispose() {
     _bloc.close();
     super.dispose();
+  }
+
+  bool _isLargeScreen() {
+    final shortestSide = MediaQuery.of(context).size.shortestSide;
+    return shortestSide >= 600;
   }
 
   ItemWidgetBuilder<domain.Image> _createItemBuilder(Size screenSize) {
