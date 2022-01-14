@@ -185,13 +185,13 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         motion: const BehindMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) { Fluttertoast.showToast(msg: 'On click download'); },
             backgroundColor: const Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.download,
           ),
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) { Fluttertoast.showToast(msg: 'On click bookmark'); },
             backgroundColor: const Color(0xFF21B7CA),
             foregroundColor: Colors.white,
             icon: Icons.bookmark_border,
@@ -204,13 +204,13 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         motion: const BehindMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) { Fluttertoast.showToast(msg: 'On click open in browser'); },
             backgroundColor: const Color(0xFF7BC043),
             foregroundColor: Colors.white,
             icon: Icons.open_in_browser,
           ),
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) { Fluttertoast.showToast(msg: 'On click share'); },
             backgroundColor: const Color(0xFF0392CF),
             foregroundColor: Colors.white,
             icon: Icons.share,

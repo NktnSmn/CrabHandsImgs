@@ -18,6 +18,19 @@ linter:
     sort_pub_dependencies: false
 
 dart_code_metrics:
+  rules:
+    - avoid-unused-parameters
+    - avoid-nested-conditional-expressions:
+        acceptable-level: 2
+    - avoid-non-null-assertion
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - binary-expression-operand-order
+    - no-empty-block
+    - prefer-conditional-expressions
+    - prefer-first
+    - prefer-last
+    - avoid-wrapping-in-padding
   metrics:
     technical-debt:
       threshold: 1
