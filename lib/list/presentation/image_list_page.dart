@@ -5,6 +5,7 @@ import 'package:crab_hands_imgs/generated/l10n.dart';
 import 'package:crab_hands_imgs/list/domain/models/image/image.dart' as domain;
 import 'package:crab_hands_imgs/list/presentation/image_list_event.dart';
 import 'package:crab_hands_imgs/list/presentation/image_list_state.dart';
+import 'package:crab_hands_imgs/list/presentation/video_item.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -136,7 +137,7 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
   }
 
   ItemWidgetBuilder<domain.Image> _createItemBuilder(Size screenSize) {
-    final double imageHeight = screenSize.height / 3;
+    final double itemHeight = screenSize.height / 3;
     final List<String> gifsUrls = [
       'https://i.gifer.com/By.gif',
       'https://cdnb.artstation.com/p/assets/images/images/017/172/739/original/alexander-rybalchenko-mk85.gif?1554914980',
@@ -146,18 +147,20 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
       'https://i.gifer.com/4vo.gif',
       'https://i.gifer.com/PEsm.gif',
     ];
+    final List<String> videosUrls = [
+      'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4',
+      'https://www.appsloveworld.com/wp-content/uploads/2018/10/640.mp4',
+    ];
     return (context, item, index) => Column(
           children: [
             Slidable(
               startActionPane: _createStartSlideActionPane(),
               endActionPane: _createEndSlideActionPane(),
               child: index % 3 == 0
-                  ? _createImage(
-                      gifsUrls[Random().nextInt(gifsUrls.length)],
-                      screenSize,
-                      imageHeight,
-                    )
-                  : _createItemImage(item, screenSize, imageHeight),
+                  ? _createImage(gifsUrls[Random().nextInt(gifsUrls.length)], itemHeight)
+                  : index % 5 == 0
+                      ? _createVideoItem(videosUrls[Random().nextInt(videosUrls.length)], itemHeight)
+                      : _createImageItem(item, itemHeight),
             ),
             Container(
               padding: const EdgeInsets.only(top: 4, left: 6, right: 6),
@@ -215,13 +218,12 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
         ],
       );
 
-  ExtendedImage _createItemImage(domain.Image item, Size screenSize, double imageHeight) =>
-      _createImage(item.regularUrl, screenSize, imageHeight);
+  ExtendedImage _createImageItem(domain.Image item, double itemHeight) => _createImage(item.regularUrl, itemHeight);
 
-  ExtendedImage _createImage(String url, Size screenSize, double imageHeight) => ExtendedImage.network(
+  ExtendedImage _createImage(String url, double height) => ExtendedImage.network(
         url,
         width: double.infinity,
-        height: imageHeight,
+        height: height,
         //cacheHeight: imageHeight.toInt(),
         fit: BoxFit.cover,
         enableLoadState: false,
@@ -236,6 +238,12 @@ class ImageListPageState extends State<ImageListPage> with ScopeStateMixin {
               return null;
           }
         },
+      );
+
+  SizedBox _createVideoItem(String url, double itemHeight) => SizedBox(
+        width: double.infinity,
+        height: itemHeight,
+        child: VideoItem(url: url),
       );
 
   ExtendedImage _createAuthorPhoto(domain.Image item) => ExtendedImage.network(
