@@ -15,8 +15,10 @@ import 'package:koin_flutter/src/widget_extension.dart'; //ignore: implementatio
 
 //ignore_for_file: avoid_print
 class ImageListPage extends StatefulWidget {
+  static String routePath = '/images';
+
   static List<GoRoute> get routes => <GoRoute>[
-        GoRoute(path: '/', builder: (context, state) => const ImageListPage()),
+        GoRoute(path: routePath, builder: (context, state) => const ImageListPage()),
       ];
 
   const ImageListPage({Key? key}) : super(key: key);
