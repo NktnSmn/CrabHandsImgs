@@ -4,11 +4,13 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoItem extends StatefulWidget {
+class VideoItemContent extends StatefulWidget {
   final String url;
+  final double height;
 
-  const VideoItem({
+  const VideoItemContent({
     required this.url,
+    required this.height,
     Key? key,
   }) : super(key: key);
 
@@ -27,7 +29,7 @@ class VideoItem extends StatefulWidget {
 }
 
 //TODO Нужна пауза при укатывании с экрана, см. https://pub.dev/packages/inview_notifier_list
-class _VideoItemsState extends State<VideoItem> {
+class _VideoItemsState extends State<VideoItemContent> {
   late VideoPlayerController _videoPlayerController;
   late ChewieController _chewieController;
 
@@ -45,10 +47,12 @@ class _VideoItemsState extends State<VideoItem> {
   }
 
   @override
-  void didUpdateWidget(covariant VideoItem oldWidget) {
+  void didUpdateWidget(covariant VideoItemContent oldWidget) {
     print(
       'VideoItem $hashCode didUpdateWidget [${widget.hashCode}, ${widget.url}], old [${oldWidget.hashCode}, ${oldWidget.url}]',
     );
+    _videoPlayerController.dispose();
+    _chewieController.dispose();
     _videoPlayerController = VideoPlayerController.network(widget.url);
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
@@ -88,6 +92,10 @@ class _VideoItemsState extends State<VideoItem> {
   @override
   Widget build(BuildContext context) {
     print('VideoItem $hashCode build');
-    return Chewie(controller: _chewieController);
+    return SizedBox(
+      width: double.infinity,
+      height: widget.height,
+      child: Chewie(controller: _chewieController),
+    );
   }
 }
