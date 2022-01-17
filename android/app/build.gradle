@@ -43,18 +43,29 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "crub.hands.crub_hands_imgs"
+        applicationId "crab.hands.crab_hands_imgs"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            apply from: '../keystore/keystore_config.gradle'
+            storeFile file(keystoreConfig.storeFile)
+            storePassword keystoreConfig.storePassword
+            keyAlias keystoreConfig.keyAlias
+            keyPassword keystoreConfig.keyPassword
+        }
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -65,4 +76,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:1.4.0"
+    implementation "androidx.multidex:multidex:2.0.1"
 }
